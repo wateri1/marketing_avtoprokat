@@ -5,7 +5,7 @@ export const FLEET_DATA = [
     year: 2024,
     classTitle: 'Премиум Электро',
     category: 'business',
-    image: '/images/zeekr.jpg',
+    image: '/images/zeekr.png',
     badge: 'Новинка',
     badgeType: 'new',
     specs: {
