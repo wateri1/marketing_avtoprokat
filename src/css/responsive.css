@@ -54,8 +54,37 @@
     gap: 12px;
   }
 
+  .header-actions .btn-open-modal {
+    display: none; /* Mobile sticky bar replaces this */
+  }
+
+  .phone-link {
+    font-size: 0.9rem;
+  }
+
   .fleet-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .car-card-header h3 {
+    font-size: 1rem;
+  }
+  
+  .car-specs {
+    font-size: 0.75rem;
+  }
+  
+  .car-specs li {
+    padding: 6px 0;
+  }
+  
+  .car-price .price-value {
+    font-size: 1.1rem;
+  }
+  
+  .car-price .price-label {
+    font-size: 0.7rem;
   }
 
   .calc-builder, .calc-receipt {
@@ -109,6 +138,20 @@
 
   body {
     padding-bottom: 72px;
+  }
+}
+
+@media (max-width: 480px) {
+  .phone-link {
+    font-size: 0.8rem;
+  }
+  
+  .logo-text {
+    font-size: 1.1rem;
+  }
+
+  .site-header .container {
+    gap: 8px;
   }
 }
 
