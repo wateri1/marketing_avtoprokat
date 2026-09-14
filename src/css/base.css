@@ -1,0 +1,183 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  position: relative;
+  /* Add subtle noise texture */
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+/* Typography */
+h1, h2, h3, h4, .font-display {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--text-primary);
+  letter-spacing: -0.03em; /* Tighter tracking for premium feel */
+}
+
+h1 {
+  font-size: clamp(2.6rem, 6vw, 4.4rem); /* Slightly larger for presence */
+  font-weight: 800;
+}
+
+h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+
+h3 {
+  font-size: 1.4rem;
+}
+
+p {
+  color: var(--text-secondary);
+  max-width: 65ch; /* Limit width for readability */
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 28px;
+  border-radius: var(--radius-md);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.btn:active {
+  transform: scale(0.98); /* Proper active state */
+}
+
+.btn-primary {
+  background: var(--accent-primary);
+  color: #000;
+}
+
+.btn-primary:hover {
+  background: var(--accent-primary-hover);
+}
+
+.btn-secondary {
+  background: var(--bg-card);
+  color: var(--text-primary);
+  border-color: var(--border-card);
+}
+
+.btn-secondary:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-subtle);
+}
+
+.btn-whatsapp, .btn-telegram {
+  background: var(--bg-card);
+  color: var(--text-primary);
+  border: 1px solid var(--border-subtle);
+}
+
+.btn-whatsapp:hover, .btn-telegram:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--text-muted);
+}
+
+.btn-sm {
+  padding: 10px 20px;
+  font-size: 0.88rem;
+}
+
+.btn-lg {
+  padding: 16px 34px;
+  font-size: 1.05rem;
+}
+
+/* Badges - Neutralize the colorful AI slop */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-subtle);
+}
+
+.badge-new {
+  color: var(--text-primary);
+  border-color: var(--border-card);
+}
+
+/* Section common */
+.section {
+  padding: 100px 0; /* Increase whitespace */
+  position: relative;
+}
+
+.section-header {
+  text-align: left; /* Break symmetry */
+  max-width: 680px;
+  margin: 0 0 56px 0;
+}
+
+.section-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 16px;
+}
+
+.section-title {
+  margin-bottom: 20px;
+}
+
+.section-subtitle {
+  font-size: 1.1rem;
+}

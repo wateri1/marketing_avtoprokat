@@ -1,0 +1,119 @@
+/* =========================================
+   RESPONSIVE STYLES
+   ========================================= */
+
+@media (max-width: 1024px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .hero-content {
+    max-width: 100%;
+  }
+
+  .hero-visual {
+    max-width: 600px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .calc-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .calc-receipt {
+    position: static;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .site-header {
+    padding: 12px 0;
+  }
+
+  .nav-links {
+    display: none; /* Can be toggled or accessed via mobile navigation */
+  }
+
+  .status-pill {
+    display: none;
+  }
+
+  .hero {
+    padding: 48px 0 40px;
+  }
+
+  .hero-features {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .fleet-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .calc-builder, .calc-receipt {
+    padding: 24px 20px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+
+  /* Sticky mobile conversion bar */
+  .mobile-sticky-bar {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    background: rgba(11, 15, 25, 0.95);
+    backdrop-filter: blur(16px);
+    border-top: 1px solid var(--border-card);
+    padding: 12px 16px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .mobile-bar-info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mobile-bar-label {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+  }
+
+  .mobile-bar-price {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--accent-primary);
+  }
+
+  body {
+    padding-bottom: 72px;
+  }
+}
+
+@media (min-width: 769px) {
+  .mobile-sticky-bar {
+    display: none;
+  }
+}
