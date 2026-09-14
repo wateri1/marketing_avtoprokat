@@ -84,26 +84,51 @@
    HERO SECTION
    ========================================= */
 .hero {
-  padding: 80px 0 60px;
   position: relative;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  padding: 100px 0;
   overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-.hero-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-  gap: 64px;
+@media (min-width: 992px) {
+  .hero {
+    background-position: 75% center;
+  }
+}
+
+.hero-bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(10, 10, 10, 0.95) 0%, rgba(10, 10, 10, 0.7) 45%, rgba(10, 10, 10, 0.2) 100%);
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .hero-bg-overlay {
+    background: linear-gradient(to bottom, rgba(10, 10, 10, 0.9) 0%, rgba(10, 10, 10, 0.7) 60%, rgba(10, 10, 10, 0.3) 100%);
+  }
+}
+
+.hero-container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
 }
 
 .hero-content {
-  max-width: 100%;
+  max-width: 650px;
 }
 
 .hero-subtitle {
   font-size: 1.1rem;
   margin-bottom: 48px;
   color: var(--text-secondary);
+  line-height: 1.6;
 }
 
 .hero-actions {
@@ -119,7 +144,7 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
   padding-top: 32px;
-  border-top: 1px solid var(--border-subtle);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .feature-item {
@@ -140,53 +165,23 @@
   color: var(--text-muted);
 }
 
-.hero-visual {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  min-height: 500px;
-}
-
-.hero-card {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  background: var(--bg-card);
-}
-
-.hero-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  filter: grayscale(20%) contrast(1.1);
-}
-
-.hero-card-badge {
-  position: absolute;
-  top: 24px;
-  left: 24px;
-  background: var(--bg-primary);
-  padding: 8px 12px;
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--border-subtle);
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  font-weight: 500;
-  text-transform: uppercase;
-}
-
 .hero-floating-box {
   position: absolute;
-  bottom: 24px;
-  right: 24px;
-  background: var(--bg-primary);
+  bottom: 32px;
+  right: 32px;
+  z-index: 3;
+  background: rgba(15, 15, 15, 0.85);
+  backdrop-filter: blur(12px);
   padding: 16px 20px;
   border-radius: var(--radius-md);
   border: 1px solid var(--border-subtle);
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 768px) {
+  .hero-floating-box {
+    display: none;
+  }
 }
 
 .floating-title {

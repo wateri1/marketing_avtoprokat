@@ -1,5 +1,33 @@
 export const FLEET_DATA = [
   {
+    id: 'zeekr-001-2024',
+    name: 'Zeekr 001',
+    year: 2024,
+    classTitle: 'Премиум Электро',
+    category: 'business',
+    image: '/images/zeekr.jpg',
+    badge: 'Новинка',
+    badgeType: 'new',
+    specs: {
+      transmission: 'Автомат',
+      engine: 'Электро / 544 л.с.',
+      consumption: 'Запас хода 580 км',
+      seats: '5 мест',
+      climate: '3-зонный климат',
+      drive: 'Полный'
+    },
+    pricing: {
+      tier1_2: 65000,
+      tier3_7: 60000,
+      tier8_14: 55000,
+      tier15_plus: 50000
+    },
+    deposit: 150000,
+    minAge: 25,
+    minExp: 4,
+    features: ['Пневмоподвеска', 'Массаж сидений', 'Панорамная крыша', 'Премиум аудио Yamaha']
+  },
+  {
     id: 'solaris-2023',
     name: 'Hyundai Solaris',
     year: 2023,
