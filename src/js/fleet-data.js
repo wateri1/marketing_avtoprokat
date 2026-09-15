@@ -354,3 +354,12 @@ export const REVIEWS_DATA = [
     text: 'Нужна была презентабельная машина для встреч с партнерами. K5 выглядит шикарно. Сервис на уровне, ребята всегда на связи в ватсапе. Цены адекватные для такого состояния авто.'
   }
 ];
+
+export function getDailyRate(car, days) {
+  const base = car.pricing.tier1_2 || 0;
+  if (days >= 30) return Math.round(base * 0.70);
+  if (days >= 14) return Math.round(base * 0.80);
+  if (days >= 7)  return Math.round(base * 0.85);
+  if (days >= 3)  return Math.round(base * 0.90);
+  return base;
+}

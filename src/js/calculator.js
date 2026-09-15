@@ -1,4 +1,4 @@
-import { FLEET_DATA, EXTRA_OPTIONS } from './fleet-data.js';
+import { FLEET_DATA, EXTRA_OPTIONS, getDailyRate } from './fleet-data.js';
 
 export class RentalCalculator {
   constructor(options = {}) {
@@ -245,30 +245,26 @@ export class RentalCalculator {
     const car = this.selectedCar;
     const days = this.days;
 
-    // 1. Determine daily tier
-    let dailyRate = car.pricing.tier1_2;
-    let tierName = '1-2 дня (базовый тариф)';
+    // 1. Determine daily rate using helper
+    const dailyRate = getDailyRate(car, days);
+    
     let discountPercent = 0;
+    if (days >= 30) discountPercent = 30;
+    else if (days >= 14) discountPercent = 20;
+    else if (days >= 7) discountPercent = 15;
+    else if (days >= 3) discountPercent = 10;
 
-    if (days >= 15) {
-      dailyRate = car.pricing.tier15_plus;
-      tierName = 'Скидка 25% (от 15 суток)';
-      discountPercent = Math.round((1 - dailyRate / car.pricing.tier1_2) * 100);
-    } else if (days >= 8) {
-      dailyRate = car.pricing.tier8_14;
-      tierName = 'Скидка 18% (8-14 суток)';
-      discountPercent = Math.round((1 - dailyRate / car.pricing.tier1_2) * 100);
-    } else if (days >= 3) {
-      dailyRate = car.pricing.tier3_7;
-      tierName = 'Скидка 11% (3-7 суток)';
-      discountPercent = Math.round((1 - dailyRate / car.pricing.tier1_2) * 100);
-    }
-
-    // Update tier badge in builder
+    // Update tier badge in builder to duplicate selection text
     if (this.tierBadge) {
+      let daysWord = 'дней';
+      const lastDigit = days % 10;
+      const lastTwo = days % 100;
+      if (lastDigit === 1 && lastTwo !== 11) daysWord = 'день';
+      else if ([2, 3, 4].includes(lastDigit) && ![12, 13, 14].includes(lastTwo)) daysWord = 'дня';
+
       this.tierBadge.textContent = discountPercent > 0
-        ? `🔥 Экономия ${discountPercent}% за срок`
-        : 'Базовый тариф';
+        ? `${days} ${daysWord} (-${discountPercent}%)`
+        : `${days} ${daysWord}`;
     }
 
     // 2. Base rental price and saved amount

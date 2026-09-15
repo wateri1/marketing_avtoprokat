@@ -236,9 +236,9 @@
 
 /* Quick days pill selectors */
 .quick-days-list {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 8px;
-  flex-wrap: wrap;
 }
 
 .quick-day-btn {

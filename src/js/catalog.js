@@ -1,4 +1,4 @@
-import { FLEET_DATA, CATEGORIES } from './fleet-data.js';
+import { FLEET_DATA, CATEGORIES, getDailyRate } from './fleet-data.js';
 
 export function initCatalog(onSelectCarForCalc, onBookCarDirect) {
   const filterContainer = document.getElementById('catalog-filters');
@@ -50,7 +50,7 @@ export function initCatalog(onSelectCarForCalc, onBookCarDirect) {
             <div class="price-display">
               <span class="price-caption">Тариф за сутки</span>
               <div class="price-main">
-                <span class="price-strike" style="display:none;"></span><span class="price-current">${car.pricing.tier3_7.toLocaleString('ru-RU')} ₸</span>
+                <span class="price-strike" style="display:none;"></span><span class="price-current">${getDailyRate(car, 3).toLocaleString('ru-RU')} ₸</span>
               </div>
               <span class="deposit-info">Залог: ${car.deposit.toLocaleString('ru-RU')} ₸</span>
             </div>
@@ -103,10 +103,7 @@ export function initCatalog(onSelectCarForCalc, onBookCarDirect) {
         if (dayVal) dayVal.textContent = val;
 
         // Determine price
-        let rate = car.pricing.tier1_2;
-        if (val >= 15) rate = car.pricing.tier15_plus;
-        else if (val >= 8) rate = car.pricing.tier8_14;
-        else if (val >= 3) rate = car.pricing.tier3_7;
+        let rate = getDailyRate(car, val);
 
         const priceCurrent = cardBody.querySelector('.price-current');
         const priceStrike = cardBody.querySelector('.price-strike');
@@ -114,9 +111,10 @@ export function initCatalog(onSelectCarForCalc, onBookCarDirect) {
         if (priceCurrent) priceCurrent.textContent = `${rate.toLocaleString('ru-RU')} ₸`;
 
         if (priceStrike) {
-          if (rate < car.pricing.tier1_2) {
+          const baseRate = car.pricing.tier1_2 || 0;
+          if (rate < baseRate) {
             priceStrike.style.display = 'inline';
-            priceStrike.textContent = `${car.pricing.tier1_2.toLocaleString('ru-RU')} ₸`;
+            priceStrike.textContent = `${baseRate.toLocaleString('ru-RU')} ₸`;
           } else {
             priceStrike.style.display = 'none';
           }
