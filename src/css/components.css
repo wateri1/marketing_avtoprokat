@@ -182,7 +182,6 @@
   backdrop-filter: blur(12px);
   padding: 16px 20px;
   border-radius: var(--radius-md);
-  border: 1px solid var(--border-subtle);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
@@ -537,16 +536,21 @@
 }
 
 .faq-answer {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease, padding 0.3s ease;
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s ease, padding 0.3s ease;
   padding: 0 24px;
   color: var(--text-secondary);
   font-size: 0.95rem;
 }
 
+.faq-answer p {
+  overflow: hidden;
+  margin: 0;
+}
+
 .faq-item.active .faq-answer {
-  max-height: 300px;
+  grid-template-rows: 1fr;
   padding: 0 24px 24px;
 }
 
@@ -637,7 +641,6 @@
 
 .modal-container {
   background: var(--bg-primary);
-  border: 1px solid var(--border-card);
   border-radius: var(--radius-md);
   width: 100%;
   max-width: 520px;

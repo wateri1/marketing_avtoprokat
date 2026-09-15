@@ -54,6 +54,11 @@ export class RentalCalculator {
   init() {
     this.renderCarSelect();
     this.renderOptions();
+    if (this.customTrigger) {
+      this.customTrigger.setAttribute('tabindex', '0');
+      this.customTrigger.setAttribute('role', 'combobox');
+      this.customTrigger.setAttribute('aria-haspopup', 'listbox');
+    }
     this.updateCustomSelectUI();
     this.attachEventListeners();
     this.calculate();
@@ -62,7 +67,7 @@ export class RentalCalculator {
   renderCarSelect() {
     if (!this.customDropdown) return;
     this.customDropdown.innerHTML = FLEET_DATA.map(car => `
-      <div class="custom-option" data-value="${car.id}">
+      <div class="custom-option" data-value="${car.id}" tabindex="0" role="option">
         <img src="${car.image}" class="custom-select-img" alt="${car.name}" />
         <div class="custom-select-text">
           <span class="custom-select-name">${car.name} (${car.classTitle})</span>
@@ -107,6 +112,13 @@ export class RentalCalculator {
       this.customSelect?.classList.toggle('open');
     });
 
+    this.customTrigger?.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        this.customSelect?.classList.toggle('open');
+      }
+    });
+
     // Custom select option click
     this.customDropdown?.addEventListener('click', (e) => {
       const option = e.target.closest('.custom-option');
@@ -120,6 +132,13 @@ export class RentalCalculator {
         this.calculate();
       }
       this.customSelect?.classList.remove('open');
+    });
+
+    this.customDropdown?.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        e.target.closest('.custom-option')?.click();
+      }
     });
 
     // Close select on outside click
@@ -387,7 +406,7 @@ export class RentalCalculator {
 
     // WhatsApp link (standard car rental business number format)
     if (this.btnWhatsApp) {
-      this.btnWhatsApp.href = `https://wa.me/79991234567?text=${encodedMsg}`;
+      this.btnWhatsApp.href = `https://wa.me/77011234567?text=${encodedMsg}`;
     }
 
     // Telegram link
