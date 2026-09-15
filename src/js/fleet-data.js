@@ -6,8 +6,6 @@ export const FLEET_DATA = [
     classTitle: 'Премиум Электро',
     category: 'business',
     image: './images/zeekr_001.jpg',
-    badge: 'Новинка',
-    badgeType: 'new',
     specs: {
       transmission: 'Автомат',
       engine: 'Электро / 544 л.с.',
@@ -34,8 +32,6 @@ export const FLEET_DATA = [
     classTitle: 'Стандарт+',
     category: 'economy',
     image: './images/hyundai_solaris.jpg',
-    badge: 'Хит проката',
-    badgeType: 'popular',
     specs: {
       transmission: 'АКПП (6-ст)',
       engine: '1.6 л / 123 л.с.',
@@ -166,8 +162,6 @@ export const FLEET_DATA = [
     classTitle: 'Премиум Кроссовер',
     category: 'crossover',
     image: './images/geely_monjaro.jpg',
-    badge: 'Новинка 2024',
-    badgeType: 'new',
     specs: {
       transmission: 'АКПП (8-ст Aisin)',
       engine: '2.0T Volvo / 238 л.с.',
@@ -194,8 +188,6 @@ export const FLEET_DATA = [
     classTitle: 'Бизнес-класс',
     category: 'business',
     image: './images/toyota_camry.jpg',
-    badge: 'Бизнес-эталон',
-    badgeType: 'popular',
     specs: {
       transmission: 'АКПП (8-ст)',
       engine: '2.5 л / 200 л.с.',
@@ -222,8 +214,6 @@ export const FLEET_DATA = [
     classTitle: 'Премиум',
     category: 'business',
     image: './images/mercedes_e200.jpg',
-    badge: 'Премиум',
-    badgeType: 'luxury',
     specs: {
       transmission: '9G-TRONIC',
       engine: '2.0 Turbo / 197 л.с.',
