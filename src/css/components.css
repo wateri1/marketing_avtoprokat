@@ -284,9 +284,10 @@
 
 .car-card-top {
   position: relative;
-  height: 240px;
+  aspect-ratio: 4/3;
   background: var(--bg-primary);
   overflow: hidden;
+  cursor: pointer;
 }
 
 .car-card-img {
@@ -437,7 +438,6 @@
   text-decoration: line-through;
   color: var(--text-muted);
   font-size: 0.85rem;
-  margin-right: 8px;
   font-weight: 400;
 }
 
@@ -467,6 +467,10 @@
   font-weight: 600;
   color: var(--text-primary);
   line-height: 1.1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px;
 }
 
 .price-unit {
@@ -721,6 +725,42 @@
   margin-bottom: 24px;
   font-size: 0.9rem;
   color: var(--text-secondary);
+}
+
+.car-details-img {
+  width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  margin-bottom: 24px;
+}
+.car-details-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.car-details-class {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+}
+.car-details-specs {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 32px;
+}
+.car-details-spec {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+}
+.car-details-spec .spec-icon {
+  width: 20px;
+  height: 20px;
+  opacity: 0.5;
+  color: var(--text-primary);
 }
 
 /* =========================================

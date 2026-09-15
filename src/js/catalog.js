@@ -24,7 +24,7 @@ export function initCatalog(onSelectCarForCalc, onBookCarDirect) {
 
     fleetGrid.innerHTML = filtered.map(car => `
       <div class="car-card" data-id="${car.id}">
-        <div class="car-card-top">
+        <div class="car-card-top btn-open-details" data-id="${car.id}" role="button" tabindex="0">
           <img src="${car.image}" alt="${car.name}" class="car-card-img" loading="lazy" />
           <span class="badge badge-${car.badgeType} car-card-badge">${car.badge}</span>
           <span class="car-card-class">${car.classTitle}</span>
@@ -35,35 +35,6 @@ export function initCatalog(onSelectCarForCalc, onBookCarDirect) {
             <div>
               <h3 class="car-name">${car.name}</h3>
               <span class="car-year">${car.year} г.в. • ${car.specs.drive}</span>
-            </div>
-          </div>
-
-          <div class="specs-grid">
-            <div class="spec-item">
-              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="12" r="9"/>
-                <path d="M12 6v6l4 2"/>
-              </svg>
-              <span>${car.specs.transmission}</span>
-            </div>
-            <div class="spec-item">
-              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                <circle cx="9" cy="7" r="4"/>
-              </svg>
-              <span>${car.specs.seats}</span>
-            </div>
-            <div class="spec-item">
-              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-              </svg>
-              <span>${car.specs.consumption}</span>
-            </div>
-            <div class="spec-item">
-              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M4.93 19.07L19.07 4.93"/>
-              </svg>
-              <span>${car.specs.climate}</span>
             </div>
           </div>
 
@@ -79,7 +50,7 @@ export function initCatalog(onSelectCarForCalc, onBookCarDirect) {
             <div class="price-display">
               <span class="price-caption">Тариф за сутки</span>
               <div class="price-main">
-                <span class="price-strike" style="display:none;"></span><span class="price-current">${car.pricing.tier3_7.toLocaleString('ru-RU')} ₸</span><span class="price-unit">/сут</span>
+                <span class="price-strike" style="display:none;"></span><span class="price-current">${car.pricing.tier3_7.toLocaleString('ru-RU')} ₸</span>
               </div>
               <span class="deposit-info">Залог: ${car.deposit.toLocaleString('ru-RU')} ₸</span>
             </div>
@@ -97,6 +68,23 @@ export function initCatalog(onSelectCarForCalc, onBookCarDirect) {
         const carId = e.currentTarget.getAttribute('data-id');
         if (onSelectCarForCalc) {
           onSelectCarForCalc(carId);
+        }
+      });
+    });
+
+    // Attach listeners to details buttons
+    fleetGrid.querySelectorAll('.btn-open-details').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const carId = e.currentTarget.getAttribute('data-id');
+        const car = FLEET_DATA.find(c => c.id === carId);
+        if (window.carDetailsModal && car) {
+          window.carDetailsModal.open(car);
+        }
+      });
+      btn.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          e.currentTarget.click();
         }
       });
     });

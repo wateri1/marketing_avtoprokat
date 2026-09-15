@@ -111,3 +111,89 @@ export class BookingModal {
     });
   }
 }
+
+export class CarDetailsModal {
+  constructor(onSelectCar) {
+    this.overlay = document.getElementById('car-details-modal');
+    this.closeBtn = document.getElementById('car-details-close-btn');
+    this.contentBox = document.getElementById('car-details-content');
+    this.onSelectCar = onSelectCar;
+    this.init();
+  }
+
+  init() {
+    if (!this.overlay) return;
+
+    this.closeBtn?.addEventListener('click', () => this.close());
+    
+    this.overlay.addEventListener('click', (e) => {
+      if (e.target === this.overlay) {
+        this.close();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && this.overlay.classList.contains('active')) {
+        this.close();
+      }
+    });
+  }
+
+  open(car) {
+    if (!this.overlay || !this.contentBox || !car) return;
+
+    this.contentBox.innerHTML = `
+      <img src="${car.image}" alt="${car.name}" class="car-details-img" />
+      <h3 class="car-details-title">${car.name} (${car.year})</h3>
+      <div class="car-details-class">${car.classTitle}</div>
+      
+      <div class="car-details-specs">
+        <div class="car-details-spec">
+          <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="9"/>
+            <path d="M12 6v6l4 2"/>
+          </svg>
+          <span>${car.specs.transmission}</span>
+        </div>
+        <div class="car-details-spec">
+          <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+          </svg>
+          <span>${car.specs.seats}</span>
+        </div>
+        <div class="car-details-spec">
+          <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+          </svg>
+          <span>${car.specs.consumption}</span>
+        </div>
+        <div class="car-details-spec">
+          <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M4.93 19.07L19.07 4.93"/>
+          </svg>
+          <span>${car.specs.climate}</span>
+        </div>
+      </div>
+      
+      <button class="btn btn-primary" id="btn-select-car-details" style="width: 100%;">
+        Выбрать для расчета
+      </button>
+    `;
+
+    document.getElementById('btn-select-car-details')?.addEventListener('click', () => {
+      this.close();
+      if (this.onSelectCar) {
+        this.onSelectCar(car.id);
+      }
+    });
+
+    this.overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  close() {
+    this.overlay.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+}

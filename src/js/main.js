@@ -6,7 +6,7 @@ import '../css/responsive.css';
 
 import { initCatalog } from './catalog.js';
 import { RentalCalculator } from './calculator.js';
-import { BookingModal } from './modal.js';
+import { BookingModal, CarDetailsModal } from './modal.js';
 import { initFaq, initReviews } from './faq.js';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -19,6 +19,12 @@ document.addEventListener('DOMContentLoaded', () => {
       modal.open(calcData);
     }
   });
+
+  // Initialize car details modal
+  const carDetailsModal = new CarDetailsModal((carId) => {
+    calculator.selectCarById(carId);
+  });
+  window.carDetailsModal = carDetailsModal;
 
   // 3. Initialize fleet catalog
   initCatalog(
