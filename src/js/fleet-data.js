@@ -31,7 +31,7 @@ export const FLEET_DATA = [
     id: 'solaris-2023',
     name: 'Hyundai Solaris',
     year: 2023,
-    classTitle: 'Эконом+',
+    classTitle: 'Стандарт+',
     category: 'economy',
     image: './images/hyundai_solaris.jpg',
     badge: 'Хит проката',
@@ -59,11 +59,9 @@ export const FLEET_DATA = [
     id: 'polo-2023',
     name: 'Volkswagen Polo',
     year: 2023,
-    classTitle: 'Эконом+',
+    classTitle: 'Стандарт+',
     category: 'economy',
     image: './images/volkswagen_polo.jpg',
-    badge: 'Экономный',
-    badgeType: 'eco',
     specs: {
       transmission: 'АКПП (Aisin)',
       engine: '1.6 л / 110 л.с.',
@@ -90,8 +88,6 @@ export const FLEET_DATA = [
     classTitle: 'Комфорт+',
     category: 'comfort',
     image: './images/skoda_octavia.jpg',
-    badge: 'Лучший для семьи',
-    badgeType: 'popular',
     specs: {
       transmission: 'АКПП (8-ст)',
       engine: '1.4 TSI / 150 л.с.',
@@ -118,8 +114,6 @@ export const FLEET_DATA = [
     classTitle: 'Комфорт+',
     category: 'comfort',
     image: './images/kia_k5.jpg',
-    badge: 'Стильный дизайн',
-    badgeType: 'accent',
     specs: {
       transmission: 'АКПП (8-ст)',
       engine: '2.5 GDI / 194 л.с.',
@@ -146,8 +140,6 @@ export const FLEET_DATA = [
     classTitle: 'Кроссовер',
     category: 'crossover',
     image: './images/haval_jolion.jpg',
-    badge: 'Полный привод 4WD',
-    badgeType: 'drive',
     specs: {
       transmission: 'Робот (7-ст 2WD/4WD)',
       engine: '1.5 Turbo / 150 л.с.',
@@ -255,7 +247,7 @@ export const FLEET_DATA = [
 
 export const CATEGORIES = [
   { id: 'all', label: 'Весь автопарк', count: 8 },
-  { id: 'economy', label: 'Эконом', count: 2 },
+  { id: 'economy', label: 'Стандарт', count: 2 },
   { id: 'comfort', label: 'Комфорт', count: 2 },
   { id: 'crossover', label: 'Кроссоверы 4WD', count: 2 },
   { id: 'business', label: 'Бизнес & Премиум', count: 2 }
@@ -308,7 +300,7 @@ export const FAQ_DATA = [
   },
   {
     question: 'Каковы требования к возрасту и стажу водителя?',
-    answer: 'Минимальный возраст — от 21 года, стаж вождения — от 2 лет (для классов Эконом и Комфорт). Для бизнес-класса и премиум кроссоверов — от 23 лет и стаж от 3 лет.'
+    answer: 'Минимальный возраст — от 21 года, стаж вождения — от 2 лет (для классов Стандарт и Комфорт). Для бизнес-класса и премиум кроссоверов — от 23 лет и стаж от 3 лет.'
   },
   {
     question: 'Как и когда возвращается гарантийный залог?',

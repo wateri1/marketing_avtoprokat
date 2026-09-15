@@ -26,7 +26,7 @@ export function initCatalog(onSelectCarForCalc, onBookCarDirect) {
       <div class="car-card" data-id="${car.id}">
         <div class="car-card-top btn-open-details" data-id="${car.id}" role="button" tabindex="0">
           <img src="${car.image}" alt="${car.name}" class="car-card-img" loading="lazy" />
-          <span class="badge badge-${car.badgeType} car-card-badge">${car.badge}</span>
+          ${car.badge ? `<span class="badge badge-${car.badgeType} car-card-badge">${car.badge}</span>` : ''}
           <span class="car-card-class">${car.classTitle}</span>
         </div>
 
