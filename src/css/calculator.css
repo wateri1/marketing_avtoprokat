@@ -242,26 +242,27 @@
 }
 
 .quick-day-btn {
-  padding: 8px 12px;
-  border-radius: 4px;
-  background: var(--bg-card);
-  border: 1px solid var(--border-subtle);
-  color: var(--text-secondary);
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
+  padding: 8px 16px;
+  border-radius: 100px;
+  background: var(--bg-elevated);
+  border: 1px solid transparent;
+  color: var(--text-primary);
+  font-family: var(--font-primary);
+  font-size: 0.85rem;
+  font-weight: 500;
   cursor: pointer;
   transition: all var(--transition-fast);
 }
 
 .quick-day-btn:hover {
   background: var(--bg-card-hover);
-  color: var(--text-primary);
+  border-color: var(--border-subtle);
 }
 
 .quick-day-btn.active {
-  background: var(--text-primary);
-  color: var(--bg-primary);
-  border-color: var(--text-primary);
+  background: var(--accent-primary);
+  color: #050505;
+  font-weight: 600;
 }
 
 /* Options checkboxes */
@@ -434,6 +435,7 @@
 .receipt-total-prices {
   display: flex;
   align-items: baseline;
+  flex-wrap: wrap;
   gap: 12px;
 }
 
@@ -443,14 +445,16 @@
   font-weight: 500;
   color: var(--text-muted);
   text-decoration: line-through;
+  white-space: nowrap;
 }
 
 .receipt-total-price {
   font-family: var(--font-mono);
   font-size: 2.5rem;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--text-primary);
   line-height: 1;
+  white-space: nowrap;
 }
 
 .receipt-deposit-note {
